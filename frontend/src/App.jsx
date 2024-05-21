@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+
+import { Toaster } from "react-hot-toast";
+
+import Navbar from "./components/navbar/Navbar";
+import LeftSide from "./components/layoutDefault/LeftSide";
+import RightSide from "./components/layoutDefault/RightSide";
+
+import useListenMessages from "./hooks/useListenMessages";
 
 function App() {
-  const [count, setCount] = useState(0)
+  useListenMessages();
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+  return <div>
+    <Navbar />
+
+      <div className="container mx-auto flex px-7 h-screen">
+
+        <LeftSide/>
+        <RightSide/>
+        
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+    <Toaster />
+  </div>
 }
 
-export default App
+export default App;
